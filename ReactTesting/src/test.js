@@ -1,22 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import './images/React.png';
-import './images/Angular.png';
-import './images/Vue.png';
-import './images/Next.png';
-import './images/Nuxt.png';
-import './images/Oracle.png';
-import './images/ElasticSearch.png';
-import './images/Cassandra.png';
-import './images/MySQL.png';
-import './images/MongoDB.png';
-import './images/Less.png';
-import './images/SCSS.png';
-import './images/Stylus.png';
-import './images/PostCSS.png';
-import './images/Babel.png';
-import './images/TypeScript.png';
-import './images/CoffeeScript.png'; 
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+
+const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
+
 
 class Button extends React.Component {
 
